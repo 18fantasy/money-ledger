@@ -15,7 +15,7 @@
 
 ## 快速开始（3 步）
 ```bash
-git clone https://github.com/<你的用户名>/money-ledger.git
+git clone https://github.com/18fantasy/money-ledger.git
 cd money-ledger
 python ledger.py
 ```
