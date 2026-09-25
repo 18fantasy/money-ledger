@@ -7,3 +7,8 @@ __pycache__/
 
 # 老师给的本地操作说明，不进公开仓库
 操作卡.md
+*_任务.md
+
+# 本地备份文件，不进公开仓库
+money.bak.json
+*.bak.json
