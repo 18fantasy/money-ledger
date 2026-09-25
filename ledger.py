@@ -43,11 +43,12 @@ def count_by_category(records):
 show(records, total)
 tool1 = sum_by_category(records)
 tool2 = count_by_category(records)
+item = sorted(tool1.items(), key=lambda x: x[1], reverse=True)
 print("--- 按类别 ---")
-for k in tool1:
-    print(f"{k}: {tool1[k]} ({tool2[k]} 笔)")
+for k,v in item:
+    print(f"{k}: {v} ({tool2[k]} 笔)")
 with open("报表.txt", "w", encoding="utf-8") as f:
-    for k in tool1:
-        f.write(f"{k}: {tool1[k]} ({tool2[k]} 笔)\n")
+    for k,v in item:
+        f.write(f"{k}: {v} ({tool2[k]} 笔)\n")
 with open("money.json", "w", encoding="utf-8") as f:
     json.dump(records, f, ensure_ascii=False)
