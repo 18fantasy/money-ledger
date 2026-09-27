@@ -1,15 +1,15 @@
+import sqlite3
 import json
+conn = sqlite3.connect("money.db")
+cur = conn.cursor()
+cur.execute("CREATE TABLE IF NOT EXISTS bills (id INTEGER PRIMARY KEY, item TEXT, money INTEGER, category TEXT)")
 records = []
 total = 0
-try:
-    with open("money.json", "r", encoding="utf-8") as f:
-        records = json.load(f)
-except FileNotFoundError:
-    records = []
-
+cur.execute("SELECT item, money, category FROM bills")
+for item, money, category in cur.fetchall():
+    records.append({"item": item, "money": money, "category": category})
 for i in range(len(records)):
     total = total + records[i]['money']
-
 while True:
     text = input("请输入物品 金额 类别（输 q 结束）")
     if text == "q":
@@ -18,6 +18,8 @@ while True:
     if len(parts) < 3:
         continue
     records.append({"item": parts[0], "money": int(parts[1]), "category": parts[2]})
+    cur.execute("INSERT INTO bills (item, money, category) VALUES (?, ?, ?)", (parts[0], int(parts[1]), parts[2]))
+    conn.commit()
     total = total + int(parts[1])
 def show(records, total):
     for i in range(len(records)):
@@ -43,12 +45,12 @@ def count_by_category(records):
 show(records, total)
 tool1 = sum_by_category(records)
 tool2 = count_by_category(records)
-item = sorted(tool1.items(), key=lambda x: x[1], reverse=True)
+排名 = sorted(tool1.items(), key=lambda x: x[1], reverse=True)
 print("--- 按类别 ---")
-for k,v in item:
+for k,v in 排名:
     print(f"{k}: {v} ({tool2[k]} 笔)")
 with open("报表.txt", "w", encoding="utf-8") as f:
-    for k,v in item:
+    for k,v in 排名:
         f.write(f"{k}: {v} ({tool2[k]} 笔)\n")
-with open("money.json", "w", encoding="utf-8") as f:
-    json.dump(records, f, ensure_ascii=False)
+conn.commit()
+conn.close()

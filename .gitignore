@@ -12,3 +12,9 @@ __pycache__/
 # 本地备份文件，不进公开仓库
 money.bak.json
 *.bak.json
+
+# 练手产物（学 SQLite 时的实验文件），不进公开仓库
+test.db
+demo.db
+demo.py
+试用_sqlite.py
