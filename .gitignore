@@ -18,3 +18,6 @@ test.db
 demo.db
 demo.py
 试用_sqlite.py
+
+# 老师给的教学资料（知识卡／任务书／操作卡），不进公开仓库
+知识卡*.md
