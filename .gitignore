@@ -12,6 +12,7 @@ __pycache__/
 # 本地备份文件，不进公开仓库
 money.bak.json
 *.bak.json
+money.json
 
 # 练手产物（学 SQLite 时的实验文件），不进公开仓库
 test.db
@@ -26,4 +27,10 @@ demo.py
 *改动单*.md
 *逐行表*.md
 money.bak.db
+*.bak.db
 迁移*.py
+
+# 练手／重打练习（用练习库，不进公开仓库）
+重打*.py
+练手*.db
+练手*.py
