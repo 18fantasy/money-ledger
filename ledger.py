@@ -1,6 +1,10 @@
+import sys
 import sqlite3
-import json
+import os
 import datetime
+month = ""
+if "--month" in sys.argv:
+    month = sys.argv[sys.argv.index("--month") + 1]
 today = str(datetime.date.today())
 conn = sqlite3.connect("money.db")
 cur = conn.cursor()
@@ -9,9 +13,13 @@ records = []
 total = 0
 cur.execute("SELECT item, money, category,date FROM bills")
 for item, money, category,date in cur.fetchall():
+    if month and (date or "")[:7] != month:
+        continue
     records.append({"item": item, "money": money, "category": category,"date": date})
 for i in range(len(records)):
     total = total + records[i]['money']
+if month and len(records) == 0:
+    print(f"{month}还没有记录")
 while True:
     text = input("请输入物品 金额 类别（输 q 结束）")
     if text == "q":
