@@ -8,7 +8,7 @@ if "--month" in sys.argv:
 today = str(datetime.date.today())
 conn = sqlite3.connect("money.db")
 cur = conn.cursor()
-cur.execute("CREATE TABLE IF NOT EXISTS bills (id INTEGER PRIMARY KEY, item TEXT, money INTEGER, category TEXT)")
+cur.execute("CREATE TABLE IF NOT EXISTS bills (id INTEGER PRIMARY KEY, item TEXT, money INTEGER, category TEXT， date text)")
 records = []
 total = 0
 cur.execute("SELECT item, money, category,date FROM bills")

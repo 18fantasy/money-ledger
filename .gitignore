@@ -82,3 +82,8 @@ _打开*.bat
 _热身_*
 _老师_*.py
 start.ps1.bak-*
+
+# 2026-10-14 起：账本数据不进公开仓库（首次运行自动生成）
+money.db
+GitHub_最小操作卡.md
+README_*.md
