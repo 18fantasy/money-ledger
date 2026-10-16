@@ -87,3 +87,9 @@ start.ps1.bak-*
 money.db
 GitHub_最小操作卡.md
 README_*.md
+
+# 2026-10-16 起：练习脚本与运行产物（都不进公开仓库）
+跑步账.py
+跑步账.bat
+_试跑/
+报表.txt
